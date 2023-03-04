@@ -1,0 +1,146 @@
+{
+  "user": [
+    {
+      "id": "nikhil",
+      "name": "nikhil ahire",
+      "password": "Nikhil@123",
+      "email": "nikhil@gmail.com",
+      "gender": "male",
+      "role": "admin",
+      "isactive": true
+    },
+    {
+      "id": "suresh",
+      "name": "suresh kumar",
+      "password": "Suresh@123",
+      "email": "suresh@gmail.com",
+      "gender": "male",
+      "role": "tech",
+      "isactive": true
+    },
+    {
+      "id": "ravi",
+      "name": "ravi kumar",
+      "password": "Ravi@123",
+      "email": "ravi@gmail.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    },
+    {
+      "id": "nitin",
+      "name": "nitin g ",
+      "password": "Nitin@123",
+      "email": "nitin@gmail.com",
+      "gender": "male",
+      "role": "tech",
+      "isactive": true
+    },
+    {
+      "id": "rpatil",
+      "name": "ritesh patil",
+      "password": "Ritesh@123",
+      "email": "ritesh@gmail.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    },
+    {
+      "id": "pkpatil",
+      "name": "pratik patil",
+      "password": "Pratik@123",
+      "email": "pratik@gmail.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    },
+    {
+      "id": "nitesh",
+      "name": "nitesh kumar",
+      "password": "Nitesh@123",
+      "email": "nitesh@g",
+      "gender": "male",
+      "role": "tech",
+      "isactive": true
+    }
+  ],
+  "role": [
+    {
+      "code": "tech",
+      "name": "Technician"
+    },
+    {
+      "code": "user",
+      "name": "User"
+    }
+  ],
+  "menu": [
+    {
+      "code": "customer",
+      "name": "Customer"
+    },
+    {
+      "code": "user",
+      "name": "User"
+    }
+  ],
+  "roleaccess": [
+    {
+      "role": "admin",
+      "menu": "user",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true
+    },
+    {
+      "role": "admin",
+      "menu": "customer",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true
+    },
+    {
+      "role": "user",
+      "menu": "user",
+      "haveedit": false,
+      "haveadd": false,
+      "havedelete": false
+    },
+    {
+      "role": "user",
+      "menu": "customer",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": false
+    },
+    {
+      "role": "tech",
+      "menu": "customer",
+      "haveedit": false,
+      "haveadd": true,
+      "havedelete": false
+    }
+  ],
+  "customer": [
+    {
+      "id": 1,
+      "name": "rakesh chaudhari",
+      "salary": 25000
+    },
+    {
+      "id": 2,
+      "name": "shyam patil",
+      "salary": 35000
+    },
+    {
+      "id": 3,
+      "name": "rajesh patil",
+      "salary": 25000
+    },
+    {
+      "id": 4,
+      "name": "sai kumar",
+      "salary": 45000
+    }
+  ]
+}
