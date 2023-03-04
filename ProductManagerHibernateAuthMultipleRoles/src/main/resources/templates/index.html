@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Manager</title>
+</head>
+<body>
+<div align="center">	
+	<div sec:authorize="isAuthenticated()">
+		Welcome <b><span sec:authentication="name">Username</span></b>
+		&nbsp;
+		<i><span sec:authentication="principal.authorities">Roles</span></i>
+	</div>
+		
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Logout" />
+	</form>
+	<div>
+	<h1>Employee Manager</h1>
+	<div sec:authorize="hasAnyAuthority('CREATOR', 'ADMIN')">
+		<a href="new">Add New Employee</a>
+	</div>
+	<br/><br/>
+	</div>
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+				<th>Employee ID</th>
+				<th>Name</th>
+				<th>Dept</th>
+				<th>Technology</th>
+				<th>Salary</th>
+				
+				<th sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">Actions</th>				
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="product : ${listProducts}">
+				<td th:text="${product.id}">Product ID</td>
+				<td th:text="${product.name}">Name</td>
+				<td th:text="${product.dept}">Dept</td>
+				<td th:text="${product.technology}">Technology</td>
+				<td th:text="${product.salary}">Salary</td>
+				
+				<td sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">
+					<a th:href="@{'/edit/' + ${product.id}}">Edit</a>			
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/delete/' + ${product.id}}">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div>&nbsp;&nbsp;</div>
+	<div>
+		Total Employees: [[${totalItems}]] - Page [[${currentPage}]] of [[${totalPages}]]	
+		&nbsp; - &nbsp;
+		
+			<a th:if="${currentPage > 1}" th:href="@{/page/1}">First</a>
+			<span th:unless="${currentPage > 1}">First</span>
+			&nbsp;
+			
+			<a th:if="${currentPage > 1}" th:href="@{'/page/' + ${currentPage -1}}">Previous</a>
+			<span th:unless="${currentPage > 1}">Previous</span>
+			&nbsp;
+
+		<span th:each="i:${#numbers.sequence(1,totalPages)}">
+			<a th:if="${i != currentPage}" th:href="@{'/page/'+ ${i}}">[[${i}]]</a>
+			<span th:unless="${i != currentPage}">[[${i}]]</span>
+			&nbsp;&nbsp;
+		</span>
+		
+			<a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
+			<span th:unless="${currentPage < totalPages}">Next</span>
+			&nbsp;
+			
+			<a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}">Last</a>
+			<span th:unless="${currentPage < totalPages}">Last</span>
+			
+	</div>	
+</div>
+</body>
+</html>
